@@ -54,5 +54,5 @@ PDF upload requires internet access the first time so the browser can load PDF.j
 
 ## Notes
 
-This is a local explainer engine. It does not send uploaded papers to a cloud service. The analysis is deterministic and runs in the browser after the paper text is extracted.
+**This is a local explainer engine. It does not send uploaded papers to a cloud service. The analysis is deterministic and runs in the browser after the paper text is extracted.**
 
