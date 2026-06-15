@@ -8,6 +8,7 @@ A portable local website for turning a research paper into:
 - Visual explanation
 - Key concepts
 - Implementation roadmap
+<img width="1823" height="946" alt="explainer visual ai reserch" src="https://github.com/user-attachments/assets/f5a08a64-d02a-4795-a492-63f7140332b8" />
 
 ## Run
 
