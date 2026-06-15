@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Research Paper Explainer</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div>
+            <h1>AI Research Paper Explainer</h1>
+            <p id="paperTitle">No paper loaded</p>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-button subtle" id="sampleButton" type="button" title="Load sample paper">
+            <i data-lucide="sparkles"></i>
+            <span>Sample</span>
+          </button>
+          <button class="icon-button" id="exportButton" type="button" disabled title="Download report">
+            <i data-lucide="download"></i>
+            <span>Export</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="control-panel" aria-label="Paper input">
+          <section class="panel-section">
+            <div class="section-heading">
+              <span>Paper Source</span>
+              <strong id="statusPill">Ready</strong>
+            </div>
+
+            <label class="dropzone" id="dropzone" for="fileInput">
+              <input id="fileInput" type="file" accept=".pdf,.txt,.md,.text,application/pdf,text/plain,text/markdown" />
+              <i data-lucide="file-up"></i>
+              <span>Drop paper or choose file</span>
+              <small>PDF, TXT, or Markdown</small>
+            </label>
+
+            <div class="divider"><span>or</span></div>
+
+            <label class="field-label" for="paperText">Paste paper text</label>
+            <textarea id="paperText" rows="9" spellcheck="false" placeholder="Paste abstract, sections, or full paper text here..."></textarea>
+            <button class="primary-button" id="analyzeTextButton" type="button">
+              <i data-lucide="brain-circuit"></i>
+              <span>Explain Paper</span>
+            </button>
+          </section>
+
+          <section class="panel-section compact">
+            <div class="section-heading">
+              <span>Signals</span>
+            </div>
+            <dl class="metrics">
+              <div>
+                <dt>Words</dt>
+                <dd id="wordCount">0</dd>
+              </div>
+              <div>
+                <dt>Sections</dt>
+                <dd id="sectionCount">0</dd>
+              </div>
+              <div>
+                <dt>Concepts</dt>
+                <dd id="conceptCount">0</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="panel-section compact">
+            <div class="section-heading">
+              <span>Focus</span>
+            </div>
+            <div class="focus-list" id="focusList">
+              <span>Upload or paste a paper to populate focus areas.</span>
+            </div>
+          </section>
+        </aside>
+
+        <section class="results-panel" aria-live="polite">
+          <nav class="tabs" aria-label="Explainer views">
+            <button class="tab active" type="button" data-view="summary">
+              <i data-lucide="scroll-text"></i>
+              <span>Summary</span>
+            </button>
+            <button class="tab" type="button" data-view="visual">
+              <i data-lucide="network"></i>
+              <span>Visual</span>
+            </button>
+            <button class="tab" type="button" data-view="concepts">
+              <i data-lucide="key-round"></i>
+              <span>Concepts</span>
+            </button>
+            <button class="tab" type="button" data-view="roadmap">
+              <i data-lucide="route"></i>
+              <span>Roadmap</span>
+            </button>
+          </nav>
+
+          <div class="view-stack">
+            <section class="view active" id="summaryView" data-view-panel="summary">
+              <div class="empty-state" id="emptyState">
+                <div class="empty-visual" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <h2>Load a research paper to begin</h2>
+                <p>The explainer will generate a summary, visual model, key concepts, and a build roadmap from the paper text.</p>
+              </div>
+              <div class="summary-content hidden" id="summaryContent"></div>
+            </section>
+
+            <section class="view" id="visualView" data-view-panel="visual">
+              <div class="visual-grid" id="visualContent"></div>
+            </section>
+
+            <section class="view" id="conceptsView" data-view-panel="concepts">
+              <div class="concept-grid" id="conceptContent"></div>
+            </section>
+
+            <section class="view" id="roadmapView" data-view-panel="roadmap">
+              <div class="roadmap" id="roadmapContent"></div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
